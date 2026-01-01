@@ -1,0 +1,14 @@
+template: |
+  Perform deep resume tailoring:
+  - Match skills explicitly
+  - Identify missing skills
+  - Rewrite summary professionally
+  - Do NOT hallucinate
+
+  Resume:
+  {resume}
+
+  Job Description:
+  {jd}
+
+  {format_instructions}

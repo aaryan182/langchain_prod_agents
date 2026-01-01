@@ -1,0 +1,14 @@
+template: |
+  Classify resume tailoring complexity as:
+  - simple (minor wording changes)
+  - deep (skill mapping + reasoning)
+
+  Resume:
+  {resume}
+
+  Job Description:
+  {jd}
+
+  Output only: simple or deep
+
+  

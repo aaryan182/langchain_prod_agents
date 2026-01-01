@@ -1,0 +1,31 @@
+Building a resume tailoring system that:
+Parses resume safely
+Understands job descriptions
+Tailors output using structured data
+Routes model by cost
+handles failures
+
+
+Problem Statement: Recruiters and Candidates want 
+Resume summaries aligned to a JD, no hallucinated skills, Deterministic proffessional output, cheap execution for simple cases, reliable structure for automation
+
+Naive GPT usage fails because: free text outputs breaks ATS pipelines, prompt drift changes tone, cost explode, no validation
+
+
+Langchain gives us: prompt discipline, structured outputs, retry + fallback, cost aware routing, composable DAGs
+
+Raw SDK calls cannot do this clearly.
+
+
+High Level Architecture
+
+Resume + JD
+   ↓
+Analyzer (cheap, no retry)
+   ↓
+If simple
+   → simple_chain (retry)
+If deep
+   → deep_chain (retry)
+      ↓ (fails)
+   → fallback: simple_chain

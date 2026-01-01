@@ -1,0 +1,11 @@
+template: |
+  Tailor the resume summary lightly for the job description.
+  Do not invent skills.
+
+  Resume:
+  {resume}
+
+  Job Description:
+  {jd}
+
+  {format_instructions}

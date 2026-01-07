@@ -1,0 +1,11 @@
+template: |
+  Extract contract information.
+
+  Rules:
+  - Do not infer missing data.
+  - Use null when unknown.
+
+  Document:
+  {document}
+
+  {format_instructions}

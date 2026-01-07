@@ -1,0 +1,15 @@
+template: |
+  Classify the document into ONE category:
+  - invoice
+  - contract
+  - insurance
+  - unknown
+
+  Do not guess.
+
+  Document:
+  {document}
+
+  Output only the category.
+
+  

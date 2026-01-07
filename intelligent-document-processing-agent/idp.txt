@@ -1,0 +1,43 @@
+Building a real IDP pipeline that:
+classifies documents
+extracts structured data
+validates outputs
+routes documents
+escalates to humans when required
+is async, scalable and auditable
+
+
+Problem it solves:
+Enterprises process invoices, contracts, insurance claims, KYC documents, medical forms
+
+Manual processing problems: slow, error , expensive, non auditable
+
+IDP replaces this with: automated classification, structured extraction, confidence based routing, human review only when needed
+
+Core Design Principles: 
+Documents are untrusted input
+LLMs never directly modify state
+Schemas are contracts
+Low confidence -> human
+Everything is logged
+Pipelines > agents
+
+
+High Level Architecture 
+
+Upload Document
+    ↓
+Document Classifier
+    ↓
+Schema-specific Extractor
+    ↓
+Validation & Confidence Scoring
+    ↓
+Routing Decision
+    ├── Auto-approve → Store result
+    └── Escalate → Human queue
+
+
+No agent loops
+No magic
+Pure deterministic orchestration

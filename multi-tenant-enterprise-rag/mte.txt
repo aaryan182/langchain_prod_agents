@@ -1,0 +1,39 @@
+Multi Tenant Enterprise RAG platform
+
+Companies want: 
+One AI platform
+Many customers
+Each tenant: owns its own data, has isolated memory, has cost limits, has custom prompts, must never leak data
+
+Naive RAG fails because: shared vector stores leak data, prompts are global, costs explodes, one tenant can DOS others, no isolation guarantees
+
+
+Core Design: This system guarantees
+Hard tenant isolation, Per tenant vector stores, per tenant prompt versions, per tenant cost budgets, per tenant model routing, auditable decisions, safe defaults
+
+High Level Architecture 
+
+Client Request
+   ↓ (tenant_id)
+Tenant Resolver
+   ↓
+Tenant Config
+   ├── Prompt Registry
+   ├── Vector Store
+   ├── Cost Budget
+   ├── Model Policy
+   ↓
+Tenant Scoped RAG Pipeline
+   ↓
+Answer + Confidence + Metadata
+
+
+Edge Case	            Handling
+Unknown tenant	         Hard reject
+Budget exceeded	      Stop request
+Empty retrieval	      Low confidence
+Prompt mismatch	      Versioned
+Cross-tenant access	   Impossible
+Model abuse	            Policy-controlled
+
+Building a multi tenant RAG platform using LangChain with strict tenant isolation, per tenant vector stores, prompt versioning, cost budgets and policy driven model routing.
